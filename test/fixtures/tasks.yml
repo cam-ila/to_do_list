@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  description: MyText
+  state: MyString
+  priority: MyString
+  start: 2016-11-24
+  finish: 2016-11-24
+  progress: 1
+  type: 
+  list: one
+
+two:
+  description: MyText
+  state: MyString
+  priority: MyString
+  start: 2016-11-24
+  finish: 2016-11-24
+  progress: 1
+  type: 
+  list: two

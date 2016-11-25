@@ -1,0 +1,2 @@
+class TemporaryTask < Task
+end
