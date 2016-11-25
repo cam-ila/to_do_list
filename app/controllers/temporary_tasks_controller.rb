@@ -1,0 +1,2 @@
+class TemporaryTasksController < ApplicationController
+end
