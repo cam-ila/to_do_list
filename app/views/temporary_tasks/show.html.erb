@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @temporary_task.description %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @temporary_task.state %>
+</p>
+
+<p>
+  <strong>Priority:</strong>
+  <%= @temporary_task.priority %>
+</p>
+
+<p>
+  <strong>Start:</strong>
+  <%= @temporary_task.start %>
+</p>
+
+<p>
+  <strong>Finish:</strong>
+  <%= @temporary_task.finish %>
+</p>
+
+<p>
+  <strong>Progress:</strong>
+  <%= @temporary_task.progress %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @temporary_task.type %>
+</p>
+
+<p>
+  <strong>List:</strong>
+  <%= @temporary_task.list %>
+</p>
+
+<%= link_to 'Edit', edit_temporary_task_path(@temporary_task) %> |
+<%= link_to 'Back', temporary_tasks_path %>
