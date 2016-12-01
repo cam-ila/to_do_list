@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @long_task.description %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @long_task.state %>
+</p>
+
+<p>
+  <strong>Priority:</strong>
+  <%= @long_task.priority %>
+</p>
+
+<p>
+  <strong>Progress:</strong>
+  <%= @long_task.progress %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @long_task.type %>
+</p>
+
+<p>
+  <strong>List:</strong>
+  <%= @long_task.list %>
+</p>
+
+<%= link_to 'Edit', edit_long_task_path(@long_task) %> |
+<%= link_to 'Back', long_tasks_path %>
