@@ -28,7 +28,7 @@ class LongTasksController < ApplicationController
 
     respond_to do |format|
       if @long_task.save
-        format.html { redirect_to @long_task, notice: 'Long task was successfully created.' }
+        format.html { redirect_to list_path(@long_task.list), notice: 'Long task was successfully created.' }
         format.json { render :show, status: :created, location: @long_task }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class LongTasksController < ApplicationController
   def update
     respond_to do |format|
       if @long_task.update(long_task_params)
-        format.html { redirect_to @long_task, notice: 'Long task was successfully updated.' }
+        format.html { redirect_to list_path(@long_task.list), notice: 'Long task was successfully updated.' }
         format.json { render :show, status: :ok, location: @long_task }
       else
         format.html { render :edit }

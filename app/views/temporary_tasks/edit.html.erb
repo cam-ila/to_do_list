@@ -2,5 +2,5 @@
 
 <%= render 'form', temporary_task: @temporary_task %>
 
-<%= link_to 'Show', @temporary_task %> |
-<%= link_to 'Back', temporary_tasks_path %>
+
+<%= link_to 'Back', list_path(@temporary_task.list) %>

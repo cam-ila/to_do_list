@@ -29,7 +29,9 @@ class ListsController < ApplicationController
 
     respond_to do |format|
       if @list.save
-        format.html { redirect_to @list, notice: 'List was successfully created.' }
+      #  format.html { redirect_to @list, notice: 'List was successfully created.' }
+        format.html { redirect_to action: "show", id: @list }
+
         format.json { render :show, status: :created, location: @list }
       else
         format.html { render :new }
@@ -70,6 +72,6 @@ class ListsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def list_params
-      params.require(:list).permit(:name, :url)
+      params.require(:list).permit(:name, :url, :created_at, :updated_at)
     end
 end

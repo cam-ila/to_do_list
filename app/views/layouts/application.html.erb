@@ -9,8 +9,23 @@
   </head>
 
   <body>
-  	<div class="container">
-    	<%= yield %>
+      <nav class="navbar navbar-light bg-faded">
+      <a href="#" class="navbar-brand"> TODO LIST</a>
+      <div class="nav navbar-nav">
+      </div>
+    </nav>
+
+    <div class="container">
+
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-8">
+        <br>
+          <%= yield %>
+        </div>
+    </div>
     </div>
   </body>
 </html>
+     
+ 

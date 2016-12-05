@@ -10,8 +10,6 @@
       <th>Priority</th>
       <th>Start</th>
       <th>Finish</th>
-      <th>Progress</th>
-      <th>Type</th>
       <th>List</th>
       <th colspan="3"></th>
     </tr>
@@ -25,9 +23,7 @@
         <td><%= temporary_task.priority %></td>
         <td><%= temporary_task.start %></td>
         <td><%= temporary_task.finish %></td>
-        <td><%= temporary_task.progress %></td>
-        <td><%= temporary_task.type %></td>
-        <td><%= temporary_task.list %></td>
+        <td><%= link_to temporary_task.list.name, temporary_task.list %></td>
         <td><%= link_to 'Show', temporary_task %></td>
         <td><%= link_to 'Edit', edit_temporary_task_path(temporary_task) %></td>
         <td><%= link_to 'Destroy', temporary_task, method: :delete, data: { confirm: 'Are you sure?' } %></td>

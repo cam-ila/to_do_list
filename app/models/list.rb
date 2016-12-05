@@ -4,8 +4,10 @@ class List < ApplicationRecord
 	validates :url, presence: true, uniqueness: true
 
 	has_many :task, dependent: :destroy
+	
 	validates_associated :task
-	#ver que el nombre no sea unico
+	
+	#ver que el nombre no sea unico 
 	def to_param
 		url
 	end

@@ -1,4 +1,4 @@
-<%= simple_form_for(@simple_task) do |f| %>
+<%= simple_form_for @simple_task, url: list_simple_task_path do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
@@ -12,4 +12,5 @@
   <div class="form-actions">
     <%= f.button :submit %>
   </div>
+
 <% end %>

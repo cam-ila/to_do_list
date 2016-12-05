@@ -1,4 +1,4 @@
-<%= simple_form_for(@long_task) do |f| %>
+<%= simple_form_for(@long_task, url: list_long_task_path)  do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
@@ -13,4 +13,5 @@
   <div class="form-actions">
     <%= f.button :submit %>
   </div>
+
 <% end %>

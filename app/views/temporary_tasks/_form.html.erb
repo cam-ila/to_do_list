@@ -1,4 +1,4 @@
-<%= simple_form_for(@temporary_task) do |f| %>
+<%= simple_form_for(@temporary_task, url: list_temporary_task_path ) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
@@ -7,8 +7,6 @@
     <%= f.input :priority %>
     <%= f.input :start %>
     <%= f.input :finish %>
-    <%= f.input :progress %>
-    <%= f.input :type %>
     <%= f.association :list %>
   </div>
 

@@ -10,5 +10,24 @@
   <%= @list.url %>
 </p>
 
+<p>
+  <strong>Creada:</strong>
+ <%= @list.created_at.strftime("%m-%d-%Y %T") %>
+</p>
+
+<p>
+  <strong>Modificada:</strong>
+ <%= @list.updated_at.strftime("%m-%d-%Y %T") %>
+</p>
+
+<p>
+  <strong>Listas:</strong>
+
+<% @list.task.each do |task| %>
+  <%= task.description %> 
+  <%= link_to 'Edit', url_for([:edit, @list, task]) %>
+  <br>
+<% end %>
+
 <%= link_to 'Edit', edit_list_path(@list) %> |
 <%= link_to 'Back', lists_path %>

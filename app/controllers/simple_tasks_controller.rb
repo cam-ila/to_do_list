@@ -28,7 +28,7 @@ class SimpleTasksController < ApplicationController
 
     respond_to do |format|
       if @simple_task.save
-        format.html { redirect_to @simple_task, notice: 'Simple task was successfully created.' }
+        format.html { redirect_to list_path(@simple_task.list), notice: 'Simple task was successfully created.' }
         format.json { render :show, status: :created, location: @simple_task }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class SimpleTasksController < ApplicationController
   def update
     respond_to do |format|
       if @simple_task.update(simple_task_params)
-        format.html { redirect_to @simple_task, notice: 'Simple task was successfully updated.' }
+        format.html { redirect_to list_path(@simple_task.list), notice: 'Simple task was successfully updated.' }
         format.json { render :show, status: :ok, location: @simple_task }
       else
         format.html { render :edit }

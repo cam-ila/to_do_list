@@ -28,7 +28,7 @@ class TemporaryTasksController < ApplicationController
 
     respond_to do |format|
       if @temporary_task.save
-        format.html { redirect_to @temporary_task, notice: 'Temporary task was successfully created.' }
+        format.html { redirect_to list_path(@temporary_task.list), notice: 'Temporary task was successfully created.' }
         format.json { render :show, status: :created, location: @temporary_task }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class TemporaryTasksController < ApplicationController
   def update
     respond_to do |format|
       if @temporary_task.update(temporary_task_params)
-        format.html { redirect_to @temporary_task, notice: 'Temporary task was successfully updated.' }
+        format.html { redirect_to list_path(@temporary_task.list), notice: 'Temporary task was successfully updated.' }
         format.json { render :show, status: :ok, location: @temporary_task }
       else
         format.html { render :edit }
@@ -69,6 +69,6 @@ class TemporaryTasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def temporary_task_params
-      params.require(:temporary_task).permit(:description, :state, :priority, :start, :finish, :progress, :type, :list_id)
+      params.require(:temporary_task).permit(:description, :state, :priority, :start, :finish, :type, :list_id)
     end
 end

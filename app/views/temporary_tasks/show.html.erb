@@ -26,18 +26,13 @@
 </p>
 
 <p>
-  <strong>Progress:</strong>
-  <%= @temporary_task.progress %>
-</p>
-
-<p>
   <strong>Type:</strong>
   <%= @temporary_task.type %>
 </p>
 
 <p>
   <strong>List:</strong>
-  <%= @temporary_task.list %>
+  <%=link_to @temporary_task.list.name, @temporary_task.list  %>
 </p>
 
 <%= link_to 'Edit', edit_temporary_task_path(@temporary_task) %> |
