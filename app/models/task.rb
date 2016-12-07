@@ -7,4 +7,9 @@ class Task < ApplicationRecord
 	validates :state,  presence: true
 
 	belongs_to :list
+
+	def all
+		{:description => description, :priority => priority, :state => state, 
+			:start => start, :finish => finish, :progress => progress }
+	end
 end

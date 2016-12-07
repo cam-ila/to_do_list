@@ -3,4 +3,6 @@ class TemporaryTask < Task
 
 	validates :start,  presence: true
 	validates :finish,  presence: true
+
+
 end

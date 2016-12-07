@@ -20,16 +20,17 @@ class SimpleTasksController < ApplicationController
   # GET /simple_tasks/1/edit
   def edit
   end
-
   # POST /simple_tasks
   # POST /simple_tasks.json
   def create
     @simple_task = SimpleTask.new(simple_task_params)
+    @simple_task.list = List.find_by(:url => params['list_id']) #VER
+
 
     respond_to do |format|
       if @simple_task.save
         format.html { redirect_to list_path(@simple_task.list), notice: 'Simple task was successfully created.' }
-        format.json { render :show, status: :created, location: @simple_task }
+        format.json { render :new, status: :created, location: @simple_task }
       else
         format.html { render :new }
         format.json { render json: @simple_task.errors, status: :unprocessable_entity }
@@ -56,7 +57,7 @@ class SimpleTasksController < ApplicationController
   def destroy
     @simple_task.destroy
     respond_to do |format|
-      format.html { redirect_to simple_tasks_url, notice: 'Simple task was successfully destroyed.' }
+      format.html { redirect_to list_path(@simple_task.list), notice: 'Simple task was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

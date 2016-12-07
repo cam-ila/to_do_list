@@ -1,5 +1,3 @@
-<h1>New Simple Task</h1>
-
 <%= simple_form_for @simple_task, url: { :action => :create } do |f| %>
   <%= f.error_notification %>
 
@@ -7,8 +5,6 @@
     <%= f.input :description %>
     <%= f.input :state %>
     <%= f.input :priority %>
-    <%= f.input :type %>
-    <%= f.association :list %>
   </div>
 
   <div class="form-actions">

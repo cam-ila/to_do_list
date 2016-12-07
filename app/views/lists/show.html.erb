@@ -19,14 +19,29 @@
   <strong>Modificada:</strong>
  <%= @list.updated_at.strftime("%m-%d-%Y %T") %>
 </p>
+ 
+ <p>
+  <strong> Nueva Tarea:</strong>
+
+  <%= link_to 'New Simple Task', new_list_simple_task_path(list_id: @list), id:"new_simple_task", remote: true %>
+  <%= link_to 'New Long Task', new_list_long_task_path(list_id: @list), id:"new_long_task", remote: true %>
+  <%= link_to 'New Temporary Task', new_list_temporary_task_path(list_id: @list), id:"new_temporary_task", remote: true %>
+</p>
+
 
 <p>
   <strong>Listas:</strong>
 
 <% @list.task.each do |task| %>
-  <%= task.description %> 
+ <div class="form-group">
+
+     <%= task.all.compact!.map {|a, b|  b } %> 
+
   <%= link_to 'Edit', url_for([:edit, @list, task]) %>
-  <br>
+  <%= link_to 'Destroy', url_for([@list, task]), method: :delete, data: { confirm: 'Are you sure?' } %>
+   <br>
+ 
+  </div>
 <% end %>
 
 <%= link_to 'Edit', edit_list_path(@list) %> |

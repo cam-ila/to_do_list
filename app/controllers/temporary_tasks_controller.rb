@@ -25,7 +25,8 @@ class TemporaryTasksController < ApplicationController
   # POST /temporary_tasks.json
   def create
     @temporary_task = TemporaryTask.new(temporary_task_params)
-
+    @temporary_task.list = List.find_by(:url => params['list_id']) #VER
+    
     respond_to do |format|
       if @temporary_task.save
         format.html { redirect_to list_path(@temporary_task.list), notice: 'Temporary task was successfully created.' }
@@ -56,7 +57,7 @@ class TemporaryTasksController < ApplicationController
   def destroy
     @temporary_task.destroy
     respond_to do |format|
-      format.html { redirect_to temporary_tasks_url, notice: 'Temporary task was successfully destroyed.' }
+      format.html { redirect_to list_path(@temporary_task.list), notice: 'Temporary task was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
