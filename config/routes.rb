@@ -4,8 +4,8 @@ Rails.application.routes.draw do
  # get '/:url', to: 'lists#show', id: "lists#show"
   
  
-  root 'lists#new'
-  get '/:id', to: 'lists#show'
+	root 'lists#new'
+	get '/:id', to: 'lists#show'
   resources :lists do
 	  resources :simple_tasks
 	  resources :long_tasks
