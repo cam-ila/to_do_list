@@ -19,15 +19,14 @@
   <strong>Modificada:</strong>
  <%= @list.updated_at.strftime("%m-%d-%Y %T") %>
 </p>
- 
- <p>
-  <strong> Nueva Tarea:</strong>
+ <div>
+   
+  <%= link_to 'New Simple Task', new_list_simple_task_path(list_id: @list), id:"new_simple_task", remote: true, class:"btn btn-info"%> |
+    <%= link_to 'New Long Task', new_list_long_task_path(list_id: @list), id:"new_long_task", remote: true, class:"btn btn-info" %> |
+    <%= link_to 'New Temporary Task', new_list_temporary_task_path(list_id: @list), id:"new_temporary_task", remote: true, class:"btn btn-info" %>  
 
-  <%= link_to 'New Simple Task', new_list_simple_task_path(list_id: @list), id:"new_simple_task", remote: true %>
-  <%= link_to 'New Long Task', new_list_long_task_path(list_id: @list), id:"new_long_task", remote: true %>
-  <%= link_to 'New Temporary Task', new_list_temporary_task_path(list_id: @list), id:"new_temporary_task", remote: true %>
-</p>
-
+ </div>
+  
 
 <p>
   <strong>Listas:</strong>
@@ -44,5 +43,7 @@
   </div>
 <% end %>
 
-<%= link_to 'Edit', edit_list_path(@list) %> |
-<%= link_to 'Back', lists_path %>
+
+<%= link_to 'Edit', edit_list_path(@list), class:"btn btn-info" %> |
+<%= link_to 'Back', root_path, class:"btn btn-danger" %>
+

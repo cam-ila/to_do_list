@@ -1,67 +1,47 @@
 class ListsController < ApplicationController
   before_action :set_list, only: [:show, :edit, :update, :destroy]
 
-  # GET /lists
-  # GET /lists.json
   def index
     @lists = List.all
   end
 
-  # GET /lists/1
-  # GET /lists/1.json
   def show
   end
 
-  # GET /lists/new
   def new
     @list = List.new
+    fucking_cookie
   end
 
-  # GET /lists/1/edit
   def edit
   end
 
-  # POST /lists
-  # POST /lists.json
   def create
     @list = List.new(list_params)
     @list.url = @list.name.parameterize
 
-    respond_to do |format|
-      if @list.save
-      #  format.html { redirect_to @list, notice: 'List was successfully created.' }
-        format.html { redirect_to action: "show", id: @list }
-
-        format.json { render :show, status: :created, location: @list }
-      else
-        format.html { render :new }
-        format.json { render json: @list.errors, status: :unprocessable_entity }
-      end
+    if @list.save
+      set_cookie
+      redirect_to action: "show", id: @list
+    else
+     fucking_cookie
+     render :new
     end
+
   end
 
-  # PATCH/PUT /lists/1
-  # PATCH/PUT /lists/1.json
   def update
-    respond_to do |format|
       if @list.update(list_params)
-        format.html { redirect_to @list, notice: 'List was successfully updated.' }
-        format.json { render :show, status: :ok, location: @list }
+       redirect_to @list, notice: 'List was successfully updated.'
       else
-        format.html { render :edit }
-        format.json { render json: @list.errors, status: :unprocessable_entity }
+        render :edit
       end
-    end
   end
 
-  # DELETE /lists/1
-  # DELETE /lists/1.json
   def destroy
+    delete_cookie(@list.url)
     @list.destroy
-    respond_to do |format|
-      format.html { redirect_to lists_url, notice: 'List was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to lists_url, notice: 'List was successfully destroyed.' 
   end
 
   private
@@ -74,4 +54,26 @@ class ListsController < ApplicationController
     def list_params
       params.require(:list).permit(:name, :url, :created_at, :updated_at)
     end
+
+    def set_cookie
+      cookies['created_lists'].nil? ? cookies['created_lists'] = @list.url + "," : cookies['created_lists'] += @list.url + ","
+    end
+    
+    def delete_cookie(url)
+      @array_cookie = array_cookie(cookies['created_lists'])
+      @array_cookie.delete(@list.url)
+      cookies['created_lists'] = @array_cookie.join(",")
+
+    end
+
+    def array_cookie(lists)
+      lists.split(",")
+    end
+
+    def fucking_cookie
+      cookies['created_lists'] ||= ''
+      @created_lists=array_cookie(cookies['created_lists'])
+    end
+
+
 end
