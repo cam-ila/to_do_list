@@ -4,8 +4,8 @@
 
   <div class="form-inputs">
     <%= f.input :description, class:"string required", required: true %>
-    <%= f.input :state, collection: ["pendiente", "en_curso", "hecha"], selected: "pendiente" %>
-    <%= f.input :priority, collection: ["alta", "media", "baja"], selected: "baja"  %>
+    <%= f.input :state, collection: states, selected:states.first  %>
+    <%= f.input :priority, collection: priorities, selected: priorities.first %>
     <%= f.input :progress, collection: 0..100, prompt: "Progreso", selected: 0 %>
   </div>
 

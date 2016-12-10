@@ -1,65 +1,47 @@
 class TemporaryTasksController < ApplicationController
   before_action :set_temporary_task, only: [:show, :edit, :update, :destroy]
 
-  # GET /temporary_tasks
-  # GET /temporary_tasks.json
+
   def index
     @temporary_tasks = TemporaryTask.all
   end
 
-  # GET /temporary_tasks/1
-  # GET /temporary_tasks/1.json
   def show
   end
 
-  # GET /temporary_tasks/new
   def new
     @temporary_task = TemporaryTask.new
   end
 
-  # GET /temporary_tasks/1/edit
   def edit
   end
 
-  # POST /temporary_tasks
-  # POST /temporary_tasks.json
   def create
     @temporary_task = TemporaryTask.new(temporary_task_params)
     @temporary_task.list = List.find_by(:url => params['list_id']) #VER
-    
-    respond_to do |format|
-      if @temporary_task.save
-        format.html { redirect_to list_path(@temporary_task.list), notice: 'Temporary task was successfully created.' }
-        format.json { render :show, status: :created, location: @temporary_task }
-      else
-        format.html { render :new }
-        format.json { render json: @temporary_task.errors, status: :unprocessable_entity }
-      end
+
+    check_date (@temporary_task)
+
+    if @temporary_task.save
+      redirect_to list_path(@temporary_task.list), notice: 'Temporary task was successfully created.'
+    else
+      format.html { render :new }
     end
   end
 
-  # PATCH/PUT /temporary_tasks/1
-  # PATCH/PUT /temporary_tasks/1.json
   def update
-    respond_to do |format|
-      if @temporary_task.update(temporary_task_params)
-        format.html { redirect_to list_path(@temporary_task.list), notice: 'Temporary task was successfully updated.' }
-        format.json { render :show, status: :ok, location: @temporary_task }
-      else
-        format.html { render :edit }
-        format.json { render json: @temporary_task.errors, status: :unprocessable_entity }
-      end
+    if @temporary_task.update(temporary_task_params)
+      check_date(@temporary_task)
+      @temporary_task.save
+      redirect_to list_path(@temporary_task.list), notice: 'Temporary task was successfully updated.' 
+    else
+      render :edit
     end
   end
 
-  # DELETE /temporary_tasks/1
-  # DELETE /temporary_tasks/1.json
   def destroy
     @temporary_task.destroy
-    respond_to do |format|
-      format.html { redirect_to list_path(@temporary_task.list), notice: 'Temporary task was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to list_path(@temporary_task.list), notice: 'Temporary task was successfully destroyed.'
   end
 
   private
@@ -71,5 +53,13 @@ class TemporaryTasksController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def temporary_task_params
       params.require(:temporary_task).permit(:description, :state, :priority, :start, :finish, :type, :list_id)
+    end
+
+    def check_date(task)
+      if task.start > task.finish
+        finish = task.finish
+        task.finish = task.start
+        task.start = finish  
+      end
     end
 end

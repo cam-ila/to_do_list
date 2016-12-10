@@ -5,8 +5,8 @@
 
   <div class="form-inputs">
     <%= f.input :description %>
-    <%= f.input :state %>
-    <%= f.input :priority %>
+    <%= f.input :state, collection: states  %>
+    <%= f.input :priority, collection: prorities %>
     <%= f.input :progress %>
   </div>
 

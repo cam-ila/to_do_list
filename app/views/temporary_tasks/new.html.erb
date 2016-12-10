@@ -6,7 +6,7 @@
   <div class="form-inputs">
     <%= f.input :description %>
     <%= f.input :state %>
-    <%= f.input :priority %>
+    <%= f.input :priority, collection: priorities %>
     <%= f.input :start %>
     <%= f.input :finish %>
     <%= f.association :list %>

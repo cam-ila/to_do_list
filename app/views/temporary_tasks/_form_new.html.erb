@@ -3,12 +3,14 @@
 
   <div class="form-inputs">
     <%= f.input :description, required: true %>
-    <%= f.input :state, collection: ["pendiente", "hecha", "expirada"], selected: "pendiente" %>
-    <%= f.input :priority, collection: ["alta", "media", "baja"], selected: "baja"  %>
+    <%= f.input :state, collection: states, selected: states.first %>
+    <%= f.input :priority, collection: priorities, selected: priorities.first %>
     <%= f.input :start %>
     <%= f.input :finish %>
   </div>
-
+<p>
+  
+</p>
   <div class="form-actions">
     <%= f.button :submit %>
   </div>

@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20161124181823) do
   create_table "tasks", force: :cascade do |t|
     t.text     "description"
     t.string   "state"
-    t.string   "priority"
+    t.integer  "priority"
     t.date     "start"
     t.date     "finish"
     t.integer  "progress"

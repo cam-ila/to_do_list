@@ -9,6 +9,17 @@
   <strong>Url:</strong>
   <%= @list.url %>
 </p>
+ 
+ <%= request.url %>
+
+
+ <div class="input-group">
+  <span class="input-group-addon" id="basic-addon1" >
+    <%=link_to 'url', request.url %>
+  </span>
+  <input type="text" class="form-control" value= <%= request.url %> aria-describedby="basic-addon1">
+</div>
+
 
 <p>
   <strong>Creada:</strong>
@@ -31,18 +42,19 @@
 <p>
   <strong>Listas:</strong>
 
-<% @list.task.each do |task| %>
- <div class="form-group">
+<% @list.task.order(:priority).each do |task| %>
+  <% if task.active? %>
+   <div class="form-group">
 
-     <%= task.all.compact!.map {|a, b|  b } %> 
+       <%= task.to_ul.html_safe %>
+        <%= priority(task.priority) %>
 
-  <%= link_to 'Edit', url_for([:edit, @list, task]) %>
-  <%= link_to 'Destroy', url_for([@list, task]), method: :delete, data: { confirm: 'Are you sure?' } %>
-   <br>
- 
-  </div>
+    <%= link_to 'Edit', url_for([:edit, @list, task]) %>
+    <%= link_to 'Destroy', url_for([@list, task]), method: :delete, data: { confirm: 'Are you sure?' } %>
+     <br>
+    </div>
+  <% end %>
 <% end %>
-
 
 <%= link_to 'Edit', edit_list_path(@list), class:"btn btn-info" %> |
 <%= link_to 'Back', root_path, class:"btn btn-danger" %>
