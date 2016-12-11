@@ -20,8 +20,6 @@ class TemporaryTasksController < ApplicationController
     @temporary_task = TemporaryTask.new(temporary_task_params)
     @temporary_task.list = List.find_by(:url => params['list_id']) #VER
 
-    check_date (@temporary_task)
-
     if @temporary_task.save
       redirect_to list_path(@temporary_task.list), notice: 'Temporary task was successfully created.'
     else
@@ -31,8 +29,6 @@ class TemporaryTasksController < ApplicationController
 
   def update
     if @temporary_task.update(temporary_task_params)
-      check_date(@temporary_task)
-      @temporary_task.save
       redirect_to list_path(@temporary_task.list), notice: 'Temporary task was successfully updated.' 
     else
       render :edit
@@ -55,11 +51,4 @@ class TemporaryTasksController < ApplicationController
       params.require(:temporary_task).permit(:description, :state, :priority, :start, :finish, :type, :list_id)
     end
 
-    def check_date(task)
-      if task.start > task.finish
-        finish = task.finish
-        task.finish = task.start
-        task.start = finish  
-      end
-    end
 end

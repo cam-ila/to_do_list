@@ -1,11 +1,20 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+st1:
+  description: Tarea simple 1
+  state: pendiente
+  priority: 0 
+  type: SimpleTask
+  list_id: 1
 
-# This model initially had no columns defined. If you add columns to the
-# model remove the '{}' from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-one: {}
-# column: value
-#
-two: {}
-# column: value
+st2:
+ description: Tarea simple 2
+ state: en_curso
+ priority: 1
+ type: SimpleTask
+ list_id: 1
+
+st3:
+ description: Tarea simple 3
+ state: en_curso
+ priority: 2
+ type: SimpleTask
+ list_id: 1

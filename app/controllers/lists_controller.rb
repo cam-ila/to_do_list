@@ -18,8 +18,7 @@ class ListsController < ApplicationController
 
   def create
     @list = List.new(list_params)
-    @list.url = @list.name.parameterize
-
+   
     if @list.save
       set_cookie
       redirect_to action: "show", id: @list

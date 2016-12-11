@@ -42,7 +42,7 @@
 <p>
   <strong>Listas:</strong>
 
-<% @list.task.order(:priority).each do |task| %>
+<% @list.task_by_priority.each do |task| %>
   <% if task.active? %>
    <div class="form-group">
 

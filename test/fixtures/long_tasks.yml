@@ -1,11 +1,23 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+lt1:
+  description: Tarea Larga 1
+  state: hecha  
+  priority: 0
+  progress: 0
+  type: LongTask
+  list: 1
 
-# This model initially had no columns defined. If you add columns to the
-# model remove the '{}' from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-one: {}
-# column: value
-#
-two: {}
-# column: value
+lt2:
+  description: Tarea larga 2
+  state: en_curso
+  priority: 1
+  progress: 10
+  type: LongTask
+  list: 1
+
+lt3:
+  description: Tarea larga 3
+  state: en_curso
+  priority: 2
+  progress: 100
+  type: LongTask
+  list: 1

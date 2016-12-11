@@ -1,5 +1,8 @@
 class TemporaryTask < Task
+	before_save :check_date
+	before_save :check_state
 	after_find :check_state
+
 
 	validates :state,  presence: true,  inclusion: { in: %w(pendiente hecha expirada), message: "%{value} is not a valid size" }
 
@@ -11,6 +14,7 @@ class TemporaryTask < Task
 	end
 
 	def active?
+		check_state()
 		!(self.state == "expirada")
 	end
 
@@ -18,8 +22,15 @@ class TemporaryTask < Task
 	def check_state ()
 		if Date.today > self.finish
 	        self.state = "expirada"
-	        self.save
      	 end
+    end
+
+    def check_date()
+      if self.start > self.finish
+        f = self.finish
+        self.finish = self.start
+        self.start = f  
+      end
     end
 
 	
