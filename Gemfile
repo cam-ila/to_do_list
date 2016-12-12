@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-
+ruby "2.2.3"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 # Use Puma as the app server
@@ -15,9 +15,9 @@ gem 'coffee-rails', '~> 4.2'
  gem 'therubyracer', platforms: :ruby
 # https://github.com/twbs/bootstrap-rubygem#installation
 
- gem 'bootstrap', '~> 4.0.0.alpha5'
- # https://github.com/plataformatec/simple_form#installation
- gem 'simple_form', '~> 3.3'
+gem 'bootstrap', '~> 4.0.0.alpha5'
+# https://github.com/plataformatec/simple_form#installation
+gem 'simple_form', '~> 3.3'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
@@ -25,20 +25,13 @@ gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
-# Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 3.0'
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
 
 
 group :development, :test do
-	# Call 'byebug' anywhere in the code to stop execution and get a debugger console
-	gem 'byebug', platform: :mri
-	# Use sqlite3 as the database for Active Record
-	gem 'sqlite3'
+  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'byebug', platform: :mri
+  # Use sqlite3 as the database for Active Record
+  gem 'sqlite3'
 end
 
 group :development do
@@ -50,7 +43,8 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
+gem 'rails_12factor', group: :production
+gem 'pg', '~> 0.19.0', group: :production
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem 'pg', '~> 0.19.0', group: :production
-gem 'rails_12factor', group: :production

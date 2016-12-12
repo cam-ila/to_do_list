@@ -1,5 +1,5 @@
 module SimpleTasksHelper
-	def states
+	def simple_states
 		[["Pendiente", "pendiente"], ["Hecha", "hecha"]]
 	end
 end
