@@ -21,34 +21,28 @@ class LongTasksController < ApplicationController
     @long_task = LongTask.new(long_task_params)
     @long_task.list = List.find_by(:url => params['list_id']) #VER
 
-    respond_to do |format|
-      if @long_task.save
-        format.html { redirect_to list_path(@long_task.list), notice: 'Long task was successfully created.' }
-      else
-        format.html { render :new }
-      end
+    if @long_task.save
+      redirect_to list_path(@long_task.list), notice: 'Long task was successfully created.'
+    else
+      render :new
     end
   end
 
 
   def update
-    respond_to do |format|
-      if @long_task.update(long_task_params)
-        format.html { redirect_to list_path(@long_task.list), notice: 'Long task was successfully updated.' }
-      else
-        format.html { render :edit }
-      end
+    if @long_task.update(long_task_params)
+      redirect_to list_path(@long_task.list), notice: 'Long task was successfully updated.'
+    else
+      render :edit
     end
   end
 
   def destroy
     @long_task.destroy
-    respond_to do |format|
-      format.html { redirect_to list_path(@long_task.list), notice: 'Long task was successfully destroyed.' }
-    end
-  end
+    redirect_to list_path(@long_task.list), notice: 'Long task was successfully destroyed.'
+end
 
-  private
+private
     # Use callbacks to share common setup or constraints between actions.
     def set_long_task
       @long_task = LongTask.find(params[:id])
@@ -58,4 +52,4 @@ class LongTasksController < ApplicationController
     def long_task_params
       params.require(:long_task).permit(:description, :state, :priority, :progress, :type, :list_id)
     end
-end
+  end
