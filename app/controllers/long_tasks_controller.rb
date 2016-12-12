@@ -22,7 +22,7 @@ class LongTasksController < ApplicationController
     @long_task.list = List.find_by(:url => params['list_id']) #VER
 
     if @long_task.save
-      redirect_to list_path(@long_task.list), notice: 'Long task was successfully created.'
+      redirect_to list_path(@long_task.list), notice: 'Se creó exitosamente la tarea.'
     else
       render :new
     end
@@ -31,7 +31,7 @@ class LongTasksController < ApplicationController
 
   def update
     if @long_task.update(long_task_params)
-      redirect_to list_path(@long_task.list), notice: 'Long task was successfully updated.'
+      redirect_to list_path(@long_task.list), notice: 'Se actualizó exitosamente la tarea.'
     else
       render :edit
     end
@@ -39,7 +39,7 @@ class LongTasksController < ApplicationController
 
   def destroy
     @long_task.destroy
-    redirect_to list_path(@long_task.list), notice: 'Long task was successfully destroyed.'
+    redirect_to list_path(@long_task.list), notice: 'Se eliminó exitosamente la tarea.'
 end
 
 private

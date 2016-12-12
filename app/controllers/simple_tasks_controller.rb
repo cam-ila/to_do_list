@@ -23,7 +23,7 @@ class SimpleTasksController < ApplicationController
 
     respond_to do |format|
       if @simple_task.save
-        format.html { redirect_to list_path(@simple_task.list), notice: 'Simple task was successfully created.' }
+        format.html { redirect_to list_path(@simple_task.list), notice: 'Se creó exitosamente la tarea.' }
       else
         format.html { render :new }
       end
@@ -33,7 +33,7 @@ class SimpleTasksController < ApplicationController
   def update
     respond_to do |format|
       if @simple_task.update(simple_task_params)
-        format.html { redirect_to list_path(@simple_task.list), notice: 'Simple task was successfully updated.' }
+        format.html { redirect_to list_path(@simple_task.list), notice: 'Se actualizó exitosamente la tarea.' }
       else
         format.html { render :edit }
       end
@@ -43,7 +43,7 @@ class SimpleTasksController < ApplicationController
   def destroy
     @simple_task.destroy
     respond_to do |format|
-      format.html { redirect_to list_path(@simple_task.list), notice: 'Simple task was successfully destroyed.' }
+      format.html { redirect_to list_path(@simple_task.list), notice: 'Se eliminó exitosamente la tarea.' }
     end
   end
 

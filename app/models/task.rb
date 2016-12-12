@@ -1,6 +1,6 @@
 class Task < ApplicationRecord
 	
-	validates :description,  presence: true, length: { maximum: 255 }
+	validates :description,  presence: {message: "No puede estar en blanco"}, length: { maximum: 255 }
 
 	validates :priority,  presence: true, numericality: { only_integer: true }
 
@@ -18,7 +18,3 @@ class Task < ApplicationRecord
 		true
 	end
 end
-
- #{self.description}
- #{self.priority}
- #{self.state}

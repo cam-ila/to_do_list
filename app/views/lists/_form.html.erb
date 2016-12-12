@@ -4,9 +4,9 @@
   <div class="form-inputs">
     <%= f.input :name, label: 'Nombre' %>
   </div>
+	<p><%= @list.errors[:url].first%></p>
 
   <div class="form-actions">
     <%= f.button :submit, 'Crear lista'%>
   </div>
-
 <% end %>

@@ -28,7 +28,7 @@
 <p>
   <strong>Tareas:</strong>
   <table class="table table-hover">
-    <% @list.task_by_priority.each do |task| %>
+    <% @list.task.each do |task| %>
     <% if task.active? %>
     <tr>
       <td>       
