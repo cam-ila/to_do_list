@@ -1,24 +1,12 @@
-# README
+# ToDoList
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Pasos para ejecutar la aplicacion:
+```sh
+$ git clone https://github.com/cam-ila/to_do_list.git
+$ cd to-do-list
+$ bundle install
+$ bundle exec rails db:create
+$ bundle exec rails db:migrate
+$ bundle exec rails db:seed
+$ bundle exec rails server
+```

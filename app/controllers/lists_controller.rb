@@ -31,7 +31,7 @@ class ListsController < ApplicationController
 
   def update
       if @list.update(list_params)
-       redirect_to @list, notice: 'List was successfully updated.'
+       redirect_to @list, notice: 'La Lista fue actualiza exitosamente'
       else
         render :edit
       end
@@ -40,7 +40,7 @@ class ListsController < ApplicationController
   def destroy
     delete_cookie(@list.url)
     @list.destroy
-    redirect_to root_path, notice: 'List was successfully destroyed.' 
+    redirect_to root_path, notice: 'La Lista fue eliminada exitosamente' 
   end
 
   private
