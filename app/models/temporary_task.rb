@@ -10,7 +10,7 @@ class TemporaryTask < Task
 	validates :finish,  presence: true
 
 	def to_ul 
-		"<dl> <dt> #{self.description} </dt> <dd> #{self.priority} </dd> <dd> #{self.state} </dd> <dd> #{self.start} </dd> <dd> #{self.finish} </dd> </dl>"
+		"#{self.description} </p> <p> <strong>Estado:</strong> #{self.state} <strong>Comienza:</strong> #{self.start} <strong>Finaliza:</strong> #{self.finish}"
 	end
 
 	def active?

@@ -11,10 +11,14 @@ class Task < ApplicationRecord
 
 
 	def to_ul 
-		"<dl> <dt> #{self.description} </dt> <dd> #{self.priority} </dd> <dd> #{self.state} </dd> </dl> "
+		"#{self.description} </p> <p> <strong>Estado:</strong>  #{self.state}"
 	end
 
 	def active?
 		true
 	end
 end
+
+ #{self.description}
+ #{self.priority}
+ #{self.state}

@@ -1,61 +1,60 @@
-<p id="notice"><%= notice %></p>
+  <p id="notice"><%= notice %></p>
+  <div class="row">
 
-<p>
-  <strong>Name:</strong>
-  <%= @list.name %>
-</p>
+    <div class="col-md-10">.
+      <div class="row">
+      <div class="col-md-6">
 
-<p>
-  <strong>Url:</strong>
-  <%= @list.url %>
-</p>
- 
- <%= request.url %>
+      <p>
+        <strong>Nombre:</strong>
+        <%= @list.name %>  
+      </p>
+      <p>
+        <strong>Creada:</strong>
+        <%= @list.created_at.strftime("%m-%d-%Y %T") %>
+      </p>
+      <p>
+        <strong>Modificada:</strong>
+        <%= @list.updated_at.strftime("%m-%d-%Y %T") %>
+      </p>
+      </div>
+      <div class="col-md-6">
+        <%= link_to 'Agregar tarea', new_list_simple_task_path(list_id: @list), id:"new_simple_task", remote: true, class:"btn btn-info btn-block"%>
+        <%= link_to 'Agregar tarea larga', new_list_long_task_path(list_id: @list), id:"new_long_task", remote: true, class:"btn btn-info btn-block" %>
+        <%= link_to 'Agregar tarea temporal', new_list_temporary_task_path(list_id: @list), id:"new_temporary_task", remote: true, class:"btn btn-info btn-block" %>  
+      </div>
+      </div>
 
-
- <div class="input-group">
-  <span class="input-group-addon" id="basic-addon1" >
-    <%=link_to 'url', request.url %>
-  </span>
-  <input type="text" class="form-control" value= <%= request.url %> aria-describedby="basic-addon1">
-</div>
-
-
-<p>
-  <strong>Creada:</strong>
- <%= @list.created_at.strftime("%m-%d-%Y %T") %>
-</p>
-
-<p>
-  <strong>Modificada:</strong>
- <%= @list.updated_at.strftime("%m-%d-%Y %T") %>
-</p>
- <div>
-   
-  <%= link_to 'New Simple Task', new_list_simple_task_path(list_id: @list), id:"new_simple_task", remote: true, class:"btn btn-info"%> |
-    <%= link_to 'New Long Task', new_list_long_task_path(list_id: @list), id:"new_long_task", remote: true, class:"btn btn-info" %> |
-    <%= link_to 'New Temporary Task', new_list_temporary_task_path(list_id: @list), id:"new_temporary_task", remote: true, class:"btn btn-info" %>  
-
- </div>
-  
-
-<p>
-  <strong>Listas:</strong>
-
-<% @list.task_by_priority.each do |task| %>
-  <% if task.active? %>
-   <div class="form-group">
-
-       <%= task.to_ul.html_safe %>
-        <%= priority(task.priority) %>
-
-    <%= link_to 'Edit', url_for([:edit, @list, task]) %>
-    <%= link_to 'Destroy', url_for([@list, task]), method: :delete, data: { confirm: 'Are you sure?' } %>
-     <br>
+      <br>
+      <p>
+        <strong>Tareas:</strong>
+        <table class="table table-hover">
+          <% @list.task_by_priority.each do |task| %>
+          <% if task.active? %>
+          <tr>
+            <td>       
+              <p>
+                <%= task.to_ul.html_safe %>
+                <strong>Prioridad:</strong> <%= priority(task.priority) %>
+              </p>
+            </td>
+            <td>          
+              <%= link_to 'Editar', url_for([:edit, @list, task]), class:"btn btn-warning btn-sm btn-block" %>
+              <%= link_to 'Eliminar', url_for([@list, task]), method: :delete, data: { confirm: 'Esta Seguro?' }, class:"btn btn-sm btn-danger btn-block" %>  
+            </td>  
+          </tr>
+          <% end %>
+          <% end %>
+        </table>  
+        <p><%= link_to 'Volver', root_path, class:"btn btn-danger" %></p>
+        <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1" >
+            <%=link_to 'url', request.url %>
+          </span>
+          <input type="text" class="form-control" value= <%= request.url %> aria-describedby="basic-addon1">
+        </div>
+      </div>
+      <div class="col-md-2">
+        <%= link_to 'Editar', edit_list_path(@list), class:"btn btn-warning btn-sm" %>
+      </div>
     </div>
-  <% end %>
-<% end %>
-
-<%= link_to 'Edit', edit_list_path(@list), class:"btn btn-info" %> |
-<%= link_to 'Back', root_path, class:"btn btn-danger" %>
-

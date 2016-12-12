@@ -1,15 +1,14 @@
-<div>
-<h1>New List</h1>
 
-<%= render 'form', list: @list %>
- 
-	
-</div>
-<div>
-	<% @created_lists.last(5).each do |c| %>
-		<%= link_to c, c, class:"btn btn-link" %>
-		<br>
-	<% end %>
-</div>
+	<h1>Crea una nueva lista</h1>
+
+	<%= render 'form', list: @list %>
+	 
+		
+
+		<% @created_lists.last(5).each do |cookies| %>
+			<%= link_to cookies, cookies, class:"btn btn-link" %>
+			<br>
+		<% end %>
+
 
 
