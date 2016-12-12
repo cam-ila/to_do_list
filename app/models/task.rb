@@ -2,7 +2,7 @@ class Task < ApplicationRecord
 	
 	validates :description,  presence: true, length: { maximum: 255 }
 
-	validates :priority,  presence: true 
+	validates :priority,  presence: true, numericality: { only_integer: true }
 
 	validates :state,  presence: true
 
