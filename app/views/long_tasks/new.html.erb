@@ -11,11 +11,11 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, 'Crear Tarea Larga' %>
   </div>
 
 <% end %>
-
-<%= link_to 'Volver', list_path(@long_task.list) %>
+<br>
+<%= link_to 'Volver', list_path(@long_task.list), class: "btn btn-info" %>
 
 

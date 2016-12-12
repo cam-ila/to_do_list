@@ -12,8 +12,8 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, 'Crear Tarea Temporal' %>
   </div>
 <% end %>
-
-<%=link_to 'Volver', @temporary_task.list  %>
+<br>
+<%=link_to 'Volver', @temporary_task.list, class:"btn btn-info"  %>
