@@ -24,9 +24,6 @@
         <td><%= temporary_task.start %></td>
         <td><%= temporary_task.finish %></td>
         <td><%= link_to temporary_task.list.name, temporary_task.list %></td>
-        <td><%= link_to 'Show', temporary_task %></td>
-        <td><%= link_to 'Edit', edit_temporary_task_path(temporary_task) %></td>
-        <td><%= link_to 'Destroy', temporary_task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -34,4 +31,3 @@
 
 <br>
 
-<%= link_to 'New Temporary Task', new_temporary_task_path %>

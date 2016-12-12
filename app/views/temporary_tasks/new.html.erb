@@ -1,15 +1,14 @@
-<h1>New Temporary Task</h1>
+<h1>Crear Tarea Temporal</h1>
 
 <%= simple_form_for(@temporary_task, url: { :action => :create } )do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :description %>
-    <%= f.input :state %>
-    <%= f.input :priority, collection: priorities %>
-    <%= f.input :start %>
-    <%= f.input :finish %>
-    <%= f.association :list %>
+    <%= f.input :description, label: "Descripcion" %>
+    <%= f.input :state, laber: "Estado" %>
+    <%= f.input :priority, collection: priorities, label: "Prioridad" %>
+    <%= f.input :start, label: "Comienza" %>
+    <%= f.input :finish, label: "Finaliza" %>
   </div>
 
   <div class="form-actions">
@@ -17,4 +16,4 @@
   </div>
 <% end %>
 
-<%= link_to 'Back', list_temporary_tasks_path %>
+<%=link_to 'Volver', @temporary_task.list  %>

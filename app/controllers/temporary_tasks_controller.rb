@@ -23,7 +23,7 @@ class TemporaryTasksController < ApplicationController
     if @temporary_task.save
       redirect_to list_path(@temporary_task.list), notice: 'Temporary task was successfully created.'
     else
-      format.html { render :new }
+      render :new 
     end
   end
 

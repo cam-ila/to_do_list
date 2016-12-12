@@ -1,16 +1,16 @@
 <%= simple_form_for(@long_task, url: { :action => :create })  do |f| %>
   <%= f.error_notification %>
   
-
+  <br>
   <div class="form-inputs">
-    <%= f.input :description, class:"string required", required: true %>
-    <%= f.input :state, collection: states, selected:states.first  %>
-    <%= f.input :priority, collection: priorities, selected: priorities.first %>
-    <%= f.input :progress, collection: 0..100, prompt: "Progreso", selected: 0 %>
+    <%= f.input :description, class:"string required", required: true,  label: 'Descripción' %>
+    <%= f.input :state, collection: states, selected:states.first,  label: 'Estado'  %>
+    <%= f.input :priority, collection: priorities, selected: priorities.first,  label: 'Prioridad' %>
+    <%= f.input :progress, collection: 0..100, prompt: "Progreso", selected: 0,  label: 'Progreso' %>
   </div>
 
   <div class="form-actions">
     <%= f.button :submit %>
   </div>
-
+  <br>
 <% end %>

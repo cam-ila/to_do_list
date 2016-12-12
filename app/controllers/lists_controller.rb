@@ -40,7 +40,7 @@ class ListsController < ApplicationController
   def destroy
     delete_cookie(@list.url)
     @list.destroy
-    redirect_to lists_url, notice: 'List was successfully destroyed.' 
+    redirect_to root_path, notice: 'List was successfully destroyed.' 
   end
 
   private

@@ -24,14 +24,9 @@
         <td><%= long_task.progress %></td>
         <td><%= long_task.type %></td>
         <td><%= long_task.list %></td>
-        <td><%= link_to 'Show', long_task %></td>
-        <td><%= link_to 'Edit', edit_long_task_path(long_task) %></td>
-        <td><%= link_to 'Destroy', long_task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Long Task', new_long_task_path %>

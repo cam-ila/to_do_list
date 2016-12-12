@@ -18,7 +18,8 @@
         <%= @list.updated_at.strftime("%m-%d-%Y %T") %>
       </p>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-1"> </div>
+      <div class="col-md-3">
         <%= link_to 'Agregar tarea', new_list_simple_task_path(list_id: @list), id:"new_simple_task", remote: true, class:"btn btn-info btn-block"%>
         <%= link_to 'Agregar tarea larga', new_list_long_task_path(list_id: @list), id:"new_long_task", remote: true, class:"btn btn-info btn-block" %>
         <%= link_to 'Agregar tarea temporal', new_list_temporary_task_path(list_id: @list), id:"new_temporary_task", remote: true, class:"btn btn-info btn-block" %>  
@@ -46,7 +47,9 @@
           <% end %>
           <% end %>
         </table>  
-        <p><%= link_to 'Volver', root_path, class:"btn btn-danger" %></p>
+
+        <p><%= link_to 'Volver', root_path, class:"btn btn-info" %></p>
+
         <div class="input-group">
           <span class="input-group-addon" id="basic-addon1" >
             <%=link_to 'url', request.url %>
@@ -55,6 +58,7 @@
         </div>
       </div>
       <div class="col-md-2">
-        <%= link_to 'Editar', edit_list_path(@list), class:"btn btn-warning btn-sm" %>
+        <%= link_to 'Editar', edit_list_path(@list), class:"btn btn-warning btn-sm btn-block" %>
+        <%= link_to 'Eliminar', @list,  method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger btn-sm btn-block" %>
       </div>
     </div>
