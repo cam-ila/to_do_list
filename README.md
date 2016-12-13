@@ -3,7 +3,7 @@
 ## Pasos para ejecutar la aplicacion:
 ```sh
 $ git clone https://github.com/cam-ila/to_do_list.git
-$ cd to-do-list
+$ cd to_do_list
 $ bundle install
 $ bundle exec rails db:migrate
 $ bundle exec rails db:seed
