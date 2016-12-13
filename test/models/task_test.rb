@@ -7,7 +7,8 @@ class TaskTest < ActiveSupport::TestCase
   	end
 	
 	test "ordenar por prioridad" do
-		assert_not (@list.task_by_priority == @list.task)
+		priorities = @list.task.map{|t| t.priority}
+		assert [priorities == priorities.sort]
 	end
 	
 
