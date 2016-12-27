@@ -6,20 +6,20 @@ class ListsController < ApplicationController
 
   def new
     @list = List.new
-    fucking_cookie
+    set_session
   end
 
   def edit
   end
 
   def create
+    set_session
     @list = List.new(list_params)
-   
     if @list.save
-      set_cookie
+      session[:current_user_id] << @list.name
       redirect_to action: "show", id: @list
     else
-     fucking_cookie
+ 
      render :new
     end
 
@@ -34,8 +34,9 @@ class ListsController < ApplicationController
   end
 
   def destroy
-    delete_cookie(@list.url)
+    set_session
     @list.destroy
+    session[:current_user_id].delete @list.url
     redirect_to root_path, notice: 'La Lista fue eliminada exitosamente' 
   end
 
@@ -50,25 +51,7 @@ class ListsController < ApplicationController
       params.require(:list).permit(:name, :url, :created_at, :updated_at)
     end
 
-    def set_cookie
-      cookies['created_lists'].nil? ? cookies['created_lists'] = @list.url + "," : cookies['created_lists'] += @list.url + ","
+    def set_session
+      @lists = session[:current_user_id] ||= Array.new 
     end
-    
-    def delete_cookie(url)
-      @array_cookie = array_cookie(cookies['created_lists'])
-      @array_cookie.delete(@list.url)
-      cookies['created_lists'] = @array_cookie.join(",")
-
-    end
-
-    def array_cookie(lists)
-      lists.split(",")
-    end
-
-    def fucking_cookie
-      cookies['created_lists'] ||= ''
-      @created_lists=array_cookie(cookies['created_lists'])
-    end
-
-
 end
