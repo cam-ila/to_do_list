@@ -1,15 +1,6 @@
 class LongTasksController < ApplicationController
   before_action :set_long_task, only: [:show, :edit, :update, :destroy]
 
-
-  def index
-    @long_tasks = LongTask.all
-  end
-
-  
-  def show
-  end
-
   def new
     @long_task = LongTask.new
   end

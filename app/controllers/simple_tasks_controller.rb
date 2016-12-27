@@ -1,12 +1,6 @@
 class SimpleTasksController < ApplicationController
   before_action :set_simple_task, only: [:show, :edit, :update, :destroy]
 
-  def index
-    @simple_tasks = SimpleTask.all
-  end
-
-  def show
-  end
 
   def new
     @simple_task = SimpleTask.new

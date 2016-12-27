@@ -2,13 +2,6 @@ class TemporaryTasksController < ApplicationController
   before_action :set_temporary_task, only: [:show, :edit, :update, :destroy]
 
 
-  def index
-    @temporary_tasks = TemporaryTask.all
-  end
-
-  def show
-  end
-
   def new
     @temporary_task = TemporaryTask.new
   end
