@@ -9,11 +9,6 @@ class Task < ApplicationRecord
 	belongs_to :list
 
 
-
-	def to_ul 
-		"#{self.description} </p> <p> <strong>Estado:</strong>  #{self.state}"
-	end
-
 	def active?
 		true
 	end

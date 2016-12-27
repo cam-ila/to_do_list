@@ -1,0 +1,17 @@
+<tr>    
+  <td>
+    <p>
+      <%= temporary_task.description %> 
+    </p> 
+    <p>  
+      <strong>Estado:</strong> <%=temporary_task.state %> 
+      <strong>Prioridad:</strong> <%= priority(temporary_task.priority) %>
+      <strong>Comienza:</strong> <% temporary_task.start %>
+      <strong>Finaliza:</strong> <% temporary_task.finish %>
+    </p>
+  </td>       
+  <td>          
+    <%= link_to 'Editar', url_for([:edit, @list, temporary_task]), class:"btn btn-warning btn-sm btn-block" %>
+    <%= link_to 'Eliminar', url_for([@list, temporary_task]), method: :delete, data: { confirm: 'Esta Seguro?' }, class:"btn btn-sm btn-danger btn-block" %>  
+  </td> 
+</tr>

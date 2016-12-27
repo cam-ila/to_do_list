@@ -4,7 +4,5 @@ class LongTask < Task
 
  	validates :state,  presence: true,  inclusion: { in: %w( pendiente en_curso hecha), message: "%{value} is not a valid size" }
  
- def to_ul 
- 	"#{self.description} </p> <p>  <strong>Estado:</strong> #{self.state}  <strong>Progreso:</strong> #{self.progress}"
- end 
+ 
 end

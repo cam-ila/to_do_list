@@ -9,10 +9,6 @@ class TemporaryTask < Task
 	validates :start,  presence: true
 	validates :finish,  presence: true
 
-	def to_ul 
-		"#{self.description} </p> <p> <strong>Estado:</strong> #{self.state} <strong>Comienza:</strong> #{self.start} <strong>Finaliza:</strong> #{self.finish}"
-	end
-
 	def active?
 		check_state()
 		!(self.state == "expirada")

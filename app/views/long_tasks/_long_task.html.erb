@@ -1,0 +1,16 @@
+<tr>    
+	<td>
+		<p>
+			<%= long_task.description %> 
+		</p> 
+		<p>  
+			<strong>Estado:</strong> <%=long_task.state %> 
+			<strong>Progreso:</strong> <%=long_task.progress%>
+			<strong>Prioridad:</strong> <%= priority(long_task.priority) %>
+		</p>
+	</td>       
+	<td>          
+		<%= link_to 'Editar', url_for([:edit, @list, long_task]), class:"btn btn-warning btn-sm btn-block" %>
+		<%= link_to 'Eliminar', url_for([@list, long_task]), method: :delete, data: { confirm: 'Esta Seguro?' }, class:"btn btn-sm btn-danger btn-block" %>  
+	</td> 
+</tr>
