@@ -6,8 +6,10 @@
     <p>  
       <strong>Estado:</strong> <%=temporary_task.state %> 
       <strong>Prioridad:</strong> <%= priority(temporary_task.priority) %>
-      <strong>Comienza:</strong> <% temporary_task.start %>
-      <strong>Finaliza:</strong> <% temporary_task.finish %>
+     </p>
+     <p>
+      <strong>Comienza:</strong> <%= temporary_task.start %>
+      <strong>Finaliza:</strong> <%= temporary_task.finish %>
     </p>
   </td>       
   <td>          

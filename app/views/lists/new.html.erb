@@ -7,10 +7,12 @@
 
 <br><br>
 	<div class="container">
-		<p><strong> Creadas recientemente </strong></p>
-		<% @lists.last(5).each do |cookies| %>
-		<%= link_to cookies, cookies, class:"btn btn-link" %>
-		<br>
+		<% if !@lists.empty? %>
+			<p><strong> Creadas recientemente </strong></p>
+			<% @lists.last(5).each do |cookies| %>
+			<%= link_to cookies, cookies, class:"btn btn-link" %>
+			<br>
+		<% end %>
 		<% end %>
 	</div>	
 
